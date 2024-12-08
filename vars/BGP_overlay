@@ -1,0 +1,302 @@
+---
+spine1-DC1:
+  localasn: 65100
+  peers: 
+    peer1:
+      ipv4: 192.168.101.11
+      asn: 65101
+    peer2:
+      ipv4: 192.168.101.12
+      asn: 65101
+    peer3:
+      ipv4: 192.168.101.13
+      asn: 65102
+    peer4:
+      ipv4: 192.168.101.14
+      asn: 65102
+    peer5:
+      ipv4: 192.168.101.21
+      asn: 65103
+    peer6:
+      ipv4: 192.168.101.22
+      asn: 65103
+
+spine2-DC1:
+  localasn: 65100
+  peers: 
+    peer1:
+      ipv4: 192.168.101.11
+      asn: 65101
+    peer2:
+      ipv4: 192.168.101.12
+      asn: 65101
+    peer3:
+      ipv4: 192.168.101.13
+      asn: 65102
+    peer4:
+      ipv4: 192.168.101.14
+      asn: 65102
+    peer5:
+      ipv4: 192.168.101.21
+      asn: 65103
+    peer6:
+      ipv4: 192.168.101.22
+      asn: 65103
+
+spine3-DC1:
+  localasn: 65100
+  peers:
+    peer1:
+      ipv4: 192.168.101.11
+      asn: 65101
+    peer2:
+      ipv4: 192.168.101.12
+      asn: 65101
+    peer3:
+      ipv4: 192.168.101.13
+      asn: 65102
+    peer4:
+      ipv4: 192.168.101.14
+      asn: 65102
+    peer5:
+      ipv4: 192.168.101.21
+      asn: 65103
+    peer6:
+      ipv4: 192.168.101.22
+      asn: 65103
+
+leaf1-DC1:
+  localasn: 65101
+  peers:
+    peer1:
+      ipv4: 192.168.101.101
+      asn: 65100
+    peer2:
+      ipv4: 192.168.101.102
+      asn: 65100
+    peer3:
+      ipv4: 192.168.101.103
+      asn: 65100
+
+leaf2-DC1:
+  localasn: 65101
+  peers:
+    peer1:
+      ipv4: 192.168.101.101
+      asn: 65100
+    peer2:
+      ipv4: 192.168.101.102
+      asn: 65100
+    peer3:
+      ipv4: 192.168.101.103
+      asn: 65100
+
+leaf3-DC1:
+  localasn: 65102
+  peers:
+    peer1:
+      ipv4: 192.168.101.101
+      asn: 65100
+    peer2:
+      ipv4: 192.168.101.102
+      asn: 65100
+    peer3:
+      ipv4: 192.168.101.103
+      asn: 65100
+
+
+leaf4-DC1:
+  localasn: 65102
+  peers: 
+    peer1:
+      ipv4: 192.168.101.101
+      asn: 65100
+    peer2:
+      ipv4: 192.168.101.102
+      asn: 65100
+    peer3:
+      ipv4: 192.168.101.103
+      asn: 65100
+
+borderleaf1-DC1:
+  localasn: 65103
+  peers:
+    peer1:
+      ipv4: 192.168.101.101
+      asn: 65100
+    peer2:
+      ipv4: 192.168.101.102
+      asn: 65100
+    peer3:
+      ipv4: 192.168.101.103
+      asn: 65100
+
+borderleaf2-DC1:
+  localasn: 65103
+  peers:
+    peer1:
+      ipv4: 192.168.101.101
+      asn: 65100
+    peer2:
+      ipv4: 192.168.101.102
+      asn: 65100
+    peer3:
+      ipv4: 192.168.101.103
+      asn: 65100
+
+
+
+spine1-DC2:
+  localasn: 65200
+  peers:
+    peer1:
+      ipv4: 192.168.201.11
+      asn: 65201
+    peer2:
+      ipv4: 192.168.201.12
+      asn: 65201
+    peer3:
+      ipv4: 192.168.201.13
+      asn: 65202
+    peer4:
+      ipv4: 192.168.201.14
+      asn: 65202
+    peer5:
+      ipv4: 192.168.201.21
+      asn: 65203
+    peer6:
+      ipv4: 192.168.201.22
+      asn: 65203
+
+spine2-DC2:
+  localasn: 65200
+  peers:
+    peer1:
+      ipv4: 192.168.201.11
+      asn: 65201
+    peer2:
+      ipv4: 192.168.201.12
+      asn: 65201
+    peer3:
+      ipv4: 192.168.201.13
+      asn: 65202
+    peer4:
+      ipv4: 192.168.201.14
+      asn: 65202
+    peer5:
+      ipv4: 192.168.201.21
+      asn: 65203
+    peer6:
+      ipv4: 192.168.201.22
+      asn: 65203
+
+spine3-DC2:
+  localasn: 65200
+  peers:
+    peer1:
+      ipv4: 192.168.201.11
+      asn: 65201
+    peer2:
+      ipv4: 192.168.201.12
+      asn: 65201
+    peer3:
+      ipv4: 192.168.201.13
+      asn: 65202
+    peer4:
+      ipv4: 192.168.201.14
+      asn: 65202
+    peer5:
+      ipv4: 192.168.201.21
+      asn: 65203
+    peer6:
+      ipv4: 192.168.201.22
+      asn: 65203
+
+leaf1-DC2:
+  localasn: 65201
+  peers:
+    peer1:
+      ipv4: 192.168.201.101
+      asn: 65200
+    peer2:
+      ipv4: 192.168.201.102
+      asn: 65200
+    peer3:
+      ipv4: 192.168.201.103
+      asn: 65200
+
+leaf2-DC2:
+  localasn: 65201
+  peers:
+    peer1:
+      ipv4: 192.168.201.101
+      asn: 65200
+    peer2:
+      ipv4: 192.168.201.102
+      asn: 65200
+    peer3:
+      ipv4: 192.168.201.103
+      asn: 65200
+
+leaf3-DC2:
+  localasn: 65202
+  peers:
+    peer1:
+      ipv4: 192.168.201.101
+      asn: 65200
+    peer2:
+      ipv4: 192.168.201.102
+      asn: 65200
+    peer3:
+      ipv4: 192.168.201.103
+      asn: 65200
+
+
+leaf4-DC2:
+  localasn: 65202
+  peers:
+    peer1:
+      ipv4: 192.168.201.101
+      asn: 65200
+    peer2:
+      ipv4: 192.168.201.102
+      asn: 65200
+    peer3:
+      ipv4: 192.168.201.103
+      asn: 65200
+
+borderleaf1-DC2:
+  localasn: 65203
+  peers:
+    peer1:
+      ipv4: 192.168.201.101
+      asn: 65200
+    peer2:
+      ipv4: 192.168.201.102
+      asn: 65200
+    peer3:
+      ipv4: 192.168.201.103
+      asn: 65200
+
+borderleaf2-DC2:
+  localasn: 65203
+  peers:
+    peer1:
+      ipv4: 192.168.201.101
+      asn: 65200
+    peer2:
+      ipv4: 192.168.201.102
+      asn: 65200
+    peer3:
+      ipv4: 192.168.201.103
+      asn: 65200
+
+
+
+
+
+    
+
+
+  
+  

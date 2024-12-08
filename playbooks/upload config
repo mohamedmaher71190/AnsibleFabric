@@ -1,0 +1,34 @@
+---
+- name: "upload config"
+  hosts: DC1,DC2
+  tasks:
+   - name: "eos INT config"
+     eos_config:
+       src: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_underlay.cfg
+       save_when: always
+
+   - name: "eos BGP config"
+     eos_config:
+      src: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_underlay_BGP.cfg
+      save_when: always
+   - name: "eos overlay BGP config"
+     eos_config:
+      src: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_overlay_BGP.cfg
+      save_when: always
+
+   - name: "eos evpn config"
+     eos_config:
+      src: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_EVPN.cfg
+      save_when: always
+      
+
+   - name: "eos mlag config"
+     eos_config:
+      src: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_mlag.cfg
+      save_when: always
+
+
+    
+
+
+

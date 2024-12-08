@@ -1,0 +1,66 @@
+{% if inventory_hostname.startswith("leaf") %}
+vrf instance {{evpn[inventory_hostname]['vrf']}}
+ip routing vrf {{evpn[inventory_hostname]['vrf']}}
+
+{%for vlan in evpn[inventory_hostname]['vlans']%}
+vlan {{evpn[inventory_hostname]['vlans'][vlan]['tag']}}
+
+interface vlan {{evpn[inventory_hostname]['vlans'][vlan]['tag']}}
+  no autostate
+  ip address {{evpn[inventory_hostname]['vlans'][vlan]['SVI']}}
+  vrf {{evpn[inventory_hostname]['vrf']}}
+  ip virtual-router address {{evpn[inventory_hostname]['vlans'][vlan]['SVIV']}}
+{%endfor%}
+  
+
+ip virtual-router mac-address {{evpn[inventory_hostname]['vMAC']}}
+
+
+router bgp {{evpn[inventory_hostname]['asn']}}
+{%for vlan in evpn[inventory_hostname]['vlans']%}
+  vlan {{evpn[inventory_hostname]['vlans'][vlan]['tag']}}
+    rd {{evpn[inventory_hostname]['lo0']}}:{{evpn[inventory_hostname]['vlans'][vlan]['VNI']}}
+    route-target both {{evpn[inventory_hostname]['vlans'][vlan]['tag']}}:{{evpn[inventory_hostname]['vlans'][vlan]['VNI']}}
+    redistribute learned
+{%endfor%}
+
+  vrf {{evpn[inventory_hostname]['vrf']}}
+    rd {{evpn[inventory_hostname]['lo0']}}:5050
+    route-target export evpn 5050:5050
+    route-target import evpn 5050:5050
+    redistribute connected
+
+
+interface Vxlan1
+
+ vxlan source-interface loopback1
+ vxlan virtual-router encapsulation mac-address {{evpn[inventory_hostname]['vMAC']}}
+ vxlan udp-port 4789
+ {%for vlan in evpn[inventory_hostname]['vlans']%}
+ vxlan vlan {{evpn[inventory_hostname]['vlans'][vlan]['tag']}}  vni {{evpn[inventory_hostname]['vlans'][vlan]['VNI']}}
+ {%endfor%}
+ vxlan vrf {{evpn[inventory_hostname]['vrf']}}  vni 5050
+{%endif%}
+
+
+{% if inventory_hostname.startswith("borderleaf") %}
+vrf instance {{evpn[inventory_hostname]['vrf']}}
+ip routing vrf {{evpn[inventory_hostname]['vrf']}}
+ip virtual-router mac-address {{evpn[inventory_hostname]['vMAC']}}
+router bgp {{evpn[inventory_hostname]['asn']}}
+  vrf {{evpn[inventory_hostname]['vrf']}}
+    rd {{evpn[inventory_hostname]['lo0']}}:5050
+    route-target export evpn 5050:5050
+    route-target import evpn 5050:5050
+    redistribute connected
+
+interface Vxlan1
+ vxlan source-interface loopback1
+ vxlan virtual-router encapsulation mac-address {{evpn[inventory_hostname]['vMAC']}}
+ vxlan udp-port 4789
+ vxlan vrf {{evpn[inventory_hostname]['vrf']}}  vni 5050
+
+ {%endif%}
+
+
+  

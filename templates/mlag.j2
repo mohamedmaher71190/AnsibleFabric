@@ -1,0 +1,55 @@
+
+{% if "leaf" in inventory_hostname %}
+{% if mlag[inventory_hostname]['mlagtype'] == "odd" %}
+vlan 4094
+trunk group MLAGPEER
+interface port-Channel 100
+  switchport mode trunk
+  switchport trunk group MLAGPEER
+  no spanning-tree vlan-id 4094
+interface vlan 4094
+  ip address 172.16.255.1/30
+  no autostate
+mlag configuration
+  local-interface vlan 4094
+  peer-address 172.16.255.2
+  peer-link port-Channel 100
+  domain-id mlagDomain
+  primary-priority 10
+  heartbeat-interval 2500
+
+{% endif %}
+
+{% if mlag[inventory_hostname]['mlagtype'] == "even" %}
+vlan 4094
+trunk group MLAGPEER
+interface port-Channel 100
+  switchport mode trunk
+  switchport trunk group MLAGPEER
+  no spanning-tree vlan-id 4094
+interface vlan 4094
+  ip address 172.16.255.2/30
+  no autostate
+mlag configuration
+  local-interface vlan 4094
+  peer-address 172.16.255.1
+  peer-link port-Channel 100
+  domain-id mlagDomain
+  primary-priority 20
+  heartbeat-interval 2500
+{% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

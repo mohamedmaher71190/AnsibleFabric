@@ -1,0 +1,17 @@
+---
+- hosts: DC1,DC2
+  tasks:
+  - name: Load mlag variable
+    include_vars:
+      file: /home/coder/project/persist/Ansible_config_gen/vars/mlag.yaml
+      name: mlag
+
+  - name: create directory for device configs 
+    file:
+      path: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}
+      state: directory
+
+  - name: Create mlag
+    template:
+      src: /home/coder/project/persist/Ansible_config_gen/templates/mlag.j2
+      dest: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_mlag.cfg

@@ -1,0 +1,15 @@
+{% for interface in underlay[inventory_hostname]['interfaces'] %}
+interface {{interface}}
+  no switchport
+  ip address  {{underlay[inventory_hostname]['interfaces'][interface]['ipv4']}}/{{underlay[inventory_hostname]['interfaces'][interface]['mask']}}
+  mtu {{underlay['global']['mtu']}}
+{% endfor %}
+
+{%for loopback in underlay[inventory_hostname]['loopbacks'] %}
+interface {{loopback}}
+  ip address  {{underlay[inventory_hostname]['loopbacks'][loopback]['ipv4']}}/{{underlay[inventory_hostname]['loopbacks'][loopback]['mask']}}
+  {% if "vlan" in loopback %}
+    no autostate
+  {%endif%}
+  
+{% endfor %}

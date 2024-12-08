@@ -1,0 +1,21 @@
+router bgp {{overlay[inventory_hostname]['localasn']}}
+  neighbor overlay  peer group
+
+{%for peer in overlay[inventory_hostname]['peers']%}
+
+  neighbor  {{overlay[inventory_hostname]['peers'][peer]['ipv4']}} remote-as {{overlay[inventory_hostname]['peers'][peer]['asn']}}
+  neighbor  {{overlay[inventory_hostname]['peers'][peer]['ipv4']}} peer group overlay
+
+{%endfor%}
+
+  neighbor overlay update-source loopback 0
+  neighbor overlay send-community extended
+  {%if "spine" in inventory_hostname%}
+  neighbor overlay next-hop-unchanged
+  {%endif%}
+  neighbor overlay maximum-routes 0
+  neighbor overlay ebgp-multihop 3
+  address-family evpn
+    neighbor overlay activate
+
+

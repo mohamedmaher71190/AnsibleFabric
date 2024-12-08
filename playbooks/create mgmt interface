@@ -1,0 +1,16 @@
+---
+- hosts: DC1,DC2
+  tasks:
+  - name: Load mgmt variable
+    include_vars:
+      file: /home/coder/project/persist/Ansible_config_gen/vars/mgmt.yaml
+      name: mgmt
+  - name: create directory for device configs 
+    file:
+      path: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}
+      state: directory
+
+  - name: Create mgmt interface
+    template:
+      src: /home/coder/project/persist/Ansible_config_gen/templates/mgmtinterfaces.j2
+      dest: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_mgmt.cfg

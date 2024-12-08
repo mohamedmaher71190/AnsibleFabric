@@ -1,0 +1,21 @@
+---
+- hosts: DC1,DC2
+  tasks:
+  - name: Load underlay variable
+    include_vars:
+      file: /home/coder/project/persist/Ansible_config_gen/vars/underlay
+      name: underlay
+
+  - name: create directory for device configs 
+    file:
+      path: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}
+      state: directory
+
+  - name: Create interfaces
+    template:
+      src: /home/coder/project/persist/Ansible_config_gen/templates/underlay_interfaces.j2
+      dest: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_underlay.cfg
+  - name: Create BGP config
+    template:
+      src: /home/coder/project/persist/Ansible_config_gen/templates/BGP_Underlay.j2
+      dest: /home/coder/project/persist/Ansible_config_gen/generated_config/{{inventory_hostname}}/{{inventory_hostname}}_underlay_BGP.cfg
