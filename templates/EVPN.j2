@@ -7,11 +7,12 @@ vlan {{evpn[inventory_hostname]['vlans'][vlan]['tag']}}
 
 interface vlan {{evpn[inventory_hostname]['vlans'][vlan]['tag']}}
   no autostate
-  ip address {{evpn[inventory_hostname]['vlans'][vlan]['SVI']}}
   vrf {{evpn[inventory_hostname]['vrf']}}
+  ip address {{evpn[inventory_hostname]['vlans'][vlan]['SVI']}}
   ip virtual-router address {{evpn[inventory_hostname]['vlans'][vlan]['SVIV']}}
 {%endfor%}
   
+
 
 ip virtual-router mac-address {{evpn[inventory_hostname]['vMAC']}}
 

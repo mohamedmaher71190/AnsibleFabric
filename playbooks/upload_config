@@ -1,6 +1,6 @@
 ---
 - name: Upload Configlets
-  hosts: leaf1-DC1
+  hosts: CloudVision
   connection: local
 
   vars_files: 
