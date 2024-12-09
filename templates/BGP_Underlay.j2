@@ -36,6 +36,7 @@ router bgp {{underlay[inventory_hostname]['asn']}}
   neighbor {{underlay[inventory_hostname]['iBGP']['peer']}} next-hop-self
   address-family ipv4
     neighbor {{underlay[inventory_hostname]['iBGP']['peer']}} activate
+    network {{underlay[inventory_hostname]['loopbacks']['loopback1']['ipv4']}}/32
  {% endif %}
 
   
